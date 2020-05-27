@@ -61,41 +61,37 @@
 
 	'use strict';
 
-	{
-	  var arr = Array.of(3, 4, 7, 9, 11);
-	  console.log('arr=', arr);
+	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-	  var empty = Array.of();
-	  console.log('empty', empty);
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	{
+	  var a1 = Symbol();
+	  var a2 = Symbol();
+	  console.log(a1 === a2);
+	  var a3 = Symbol.for('a3');
+	  var a4 = Symbol.for('a3');
+	  console.log(a3 === a4);
 	}
 
 	{
-	  var p = document.querySelectorAll('p');
-	  var pArr = Array.from(p);
-	  pArr.forEach(function (item) {
-	    console.log(item.textContent);
-	  });
+	  var _obj;
 
-	  console.log(Array.from([1, 3, 5], function (item) {
-	    return item * 2;
-	  }));
-	}
+	  var _a = Symbol.for('abc');
+	  var obj = (_obj = {}, _defineProperty(_obj, _a, '123'), _defineProperty(_obj, 'abc', 345), _defineProperty(_obj, 'c', 456), _obj);
+	  console.log('obj', obj);
 
-	{
-	  console.log('fill-7', [1, 'a', undefined].fill(7));
-	  console.log('fill-pos', ['a', 'b', 'c', 'd'].fill(7, 1, 3));
-	}
-
-	{
 	  var _iteratorNormalCompletion = true;
 	  var _didIteratorError = false;
 	  var _iteratorError = undefined;
 
 	  try {
-	    for (var _iterator = ['1', 'c', 'ks'].keys()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	      var index = _step.value;
+	    for (var _iterator = Object.entries(obj)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	      var _step$value = _slicedToArray(_step.value, 2),
+	          key = _step$value[0],
+	          value = _step$value[1];
 
-	      console.log('keys', index);
+	      console.log('let of', key, value);
 	    }
 	  } catch (err) {
 	    _didIteratorError = true;
@@ -112,44 +108,13 @@
 	    }
 	  }
 
-	  var _iteratorNormalCompletion2 = true;
-	  var _didIteratorError2 = false;
-	  var _iteratorError2 = undefined;
+	  Object.getOwnPropertySymbols(obj).forEach(function (item) {
+	    console.log(obj[item]);
+	  });
 
-	  try {
-	    for (var _iterator2 = ['1', 'c', 'ks'].values()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	      var value = _step2.value;
-
-	      console.log('values', value);
-	    }
-	  } catch (err) {
-	    _didIteratorError2 = true;
-	    _iteratorError2 = err;
-	  } finally {
-	    try {
-	      if (!_iteratorNormalCompletion2 && _iterator2.return) {
-	        _iterator2.return();
-	      }
-	    } finally {
-	      if (_didIteratorError2) {
-	        throw _iteratorError2;
-	      }
-	    }
-	  }
-	}
-
-	{
-	  console.log([1, 2, 3, 4, 5].copyWithin(0, 3, 5));
-	}
-
-	{
-	  console.log([1, 2, 3, 4, 5, 6].find(function (item) {
-	    return item > 3;
-	  }));
-	}
-
-	{
-	  console.log('number', [1, 2, NaN].includes(1));
+	  Reflect.ownKeys(obj).forEach(function (item) {
+	    console.log('ownkeys', item, obj[item]);
+	  });
 	}
 
 /***/ })
