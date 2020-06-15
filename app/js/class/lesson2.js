@@ -12,7 +12,7 @@
 
 {
   let a,b;
-  ({a,b}={a:1,b:2});
+  ({a,b}={a:1,b:2})
   console.log(a,b);
 }
 
@@ -52,7 +52,7 @@
     return [1,2,3,4,5]
   }
   let a,b,c;
-  [a,...b]=f();
+  [a,,...b]=f();
   console.log(a,b);
 }
 

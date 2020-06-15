@@ -1,14 +1,15 @@
 {
-  function test(x, y='world'){
-    console.log("default",x,y);
+  function test(x, y = 'world'){
+    console.log('默认值',x,y);
   }
   test('hello');
+  test('hello','kill');
 }
 
 {
   let x='test';
   function test2(x,y=x){
-    console.log('Effective field',x,y);
+    console.log('作用域',x,y);
   }
   test2('kill');
 }
@@ -24,13 +25,15 @@
 
 {
   console.log(...[1,2,4]);
+  console.log('a',...[1,2,4]);
 }
 
 {
-  let arrow=v=>v*2;
-  let arrow2=()=>5;
+  let arrow = v => v*2;
+  let arrow2 = () => 5;
   console.log('arrow',arrow(3));
   console.log(arrow2());
+
 }
 
 {
@@ -38,7 +41,7 @@
     console.log('tail',x);
   }
   function fx(x){
-    return tail(x);
+    return tail(x)
   }
-  fx(123);
+  fx(123)
 }

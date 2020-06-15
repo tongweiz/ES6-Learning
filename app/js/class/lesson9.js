@@ -1,4 +1,5 @@
 {
+  // 声明
   let a1=Symbol();
   let a2=Symbol();
   console.log(a1===a2);
@@ -23,9 +24,8 @@
   Object.getOwnPropertySymbols(obj).forEach(function(item){
     console.log(obj[item]);
   })
-  
+
   Reflect.ownKeys(obj).forEach(function(item){
     console.log('ownkeys',item,obj[item]);
-    
   })
 }
